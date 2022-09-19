@@ -1,0 +1,32 @@
+
+int in[32];
+int out[32];
+
+int *inptr,*outptr;
+int main(void)
+{
+
+inptr = in ;
+
+for(int i=0;i<=32;i++){
+	*inptr = i+1;
+	inptr++;
+}
+
+	inptr = in;
+	outptr = out;
+	for(int i =1;i<=32;i=i+2){
+	 *(outptr+i-1) = *(inptr+i);
+	 *(outptr+i) =*(inptr+i-1);
+
+
+		}
+
+
+
+
+
+
+
+for(;;);
+}

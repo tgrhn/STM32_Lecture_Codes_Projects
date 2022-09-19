@@ -1,0 +1,27 @@
+#include "mbed.h"
+#include <chrono>
+#include <cstdint>
+DigitalOut red(PA_5);
+Timer timer1;
+InterruptIn button1(BUTTON1);
+
+uint32_t elapsedMS;
+
+void triggerRise(){
+    timer1.start();
+}
+void triggerFall(){
+    timer1.stop();
+    elapsedMS=chrono::duration_cast<chrono::milliseconds>(timer1.elapsed_time()).count();
+    if(elapsedMS> 3000)
+    red=1;
+    else
+        red=0;
+    timer1.reset();
+}
+int main() {
+ button1.fall(&triggerRise);
+ button1.rise(&triggerFall);
+   while(1);
+  
+}

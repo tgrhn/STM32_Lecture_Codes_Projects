@@ -1,0 +1,44 @@
+.cpu cortex-m0plus
+.thumb
+
+.global main
+
+main:
+
+	LDR R0, =0x20000040
+
+	MOV R1,#0x1
+	MOV R3,#0x0
+	MOV R4,#0x3
+Loop1:
+	STR R1,[R0,R3]
+	ADD R1,R1,#0x1
+	ADD R3,R3,#0x4
+	ADD R4,#-1
+	BPL Loop1
+
+	MOV R5,#0x0
+	MOV R3,#0x0
+	MOV R4,#0x3
+Loop2:
+	LDR R2,[R0,R3]
+	ADD R5,R5,R2
+	ADD R3,R3,#0x4
+	ADD R4,#-1
+	BHS Loop2
+
+	LSR R5,R5,#2
+
+	CMP R5,#0x03
+	BHS Greater
+
+	MOV R6,#0xFF
+	B Done
+
+	Greater:
+	MOV R6,#0x1
+	Done:
+
+
+	END: B END
+.end

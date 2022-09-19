@@ -1,0 +1,21 @@
+#include "mbed.h"
+
+
+DigitalOut red(PA_5);
+Ticker ticker1;
+
+
+
+void toggleRedLed(){
+    
+red=!red;
+
+}
+
+int main() {
+    red=0;
+   ticker1.attach(&toggleRedLed,5s);
+   while(1);
+  
+}
+    

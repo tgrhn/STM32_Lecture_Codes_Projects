@@ -1,0 +1,46 @@
+#include "mbed.h"
+ 
+AnalogIn analog_value(PA_1);
+ 
+DigitalOut led1(PA_6);
+DigitalOut led2(PB_6);
+DigitalOut led3(PA_9);
+
+
+int main() {
+    
+    float volt;
+    
+    
+    while(1){
+        
+         volt = analog_value.read(); 
+        volt= volt * 3300; 
+        
+        if(volt>0){
+            led1=1;
+        
+        }
+        if(volt>1000){
+            led2=1;
+        
+        }
+        if(volt>=2000){
+            led3=1;
+        
+        }
+            if(volt<0){
+            led1=0;
+        
+        }
+            if(volt<1000){
+            led2=0;
+        
+        }
+            if(volt<=2000){
+            led3=0;
+        
+        }
+              
+        }
+        }

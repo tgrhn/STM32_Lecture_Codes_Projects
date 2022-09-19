@@ -1,0 +1,26 @@
+#include "mbed.h"
+#include <chrono>
+#include <cstdint>
+DigitalOut red(PA_5);
+Ticker ticker1;
+InterruptIn button1(BUTTON1);
+
+
+
+void toggleRed(){
+    red=!red;
+    Watchdog::get_instance().kick();
+}
+void trigger(){
+ while(1);
+}
+
+int main() {
+Watchdog &wdt = Watchdog::get_instance();
+ticker1.attach(&toggleRed,1s);
+wdt.start(4000);
+button1.rise(&trigger);
+   while(1);
+  
+}
+    

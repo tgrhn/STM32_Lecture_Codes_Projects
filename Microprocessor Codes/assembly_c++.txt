@@ -1,0 +1,29 @@
+
+#define memloc1 (*(unsigned long *)0x20000020)
+#define memloc2 (*(unsigned long *)0x20000024)
+#define memloc3 (*(unsigned long *)0x20000028)
+
+	unsigned int a;
+int main(){
+
+	memloc1 = 0x3;
+	memloc2 = 0x4;
+
+__asm("LDR R7,=0x20000020 \n"
+	  "LDR R0,[R7] \n"
+	  "ADD R7,R7,#0x4 \n"
+	  "LDR R1,[R7] \n"
+	  "ADD R2,R1,R0 \n"
+	  "ADD R7,R7,#0x4 \n"
+	  "STR R2,[R7] \n"	);
+
+	a = memloc3;
+
+
+	for(;;);
+
+
+
+
+}
+

@@ -1,0 +1,22 @@
+#include "mbed.h"
+#define WAIT_TIME_MS 1000
+PwmOut pwmOut(PA_6);
+AnalogOut dacOut(A2);
+DigitalIn button(BUTTON1);
+uint32_t i = 0x8000;
+
+int main()
+{
+   pwmOut.period_us(256);
+while (1)
+{
+    if(button==1){
+i += 2048;
+if (i > 0xFFFF)
+i = 0x8000;
+dacOut.write(i);
+pwmOut.pulsewidth_ms(i);
+
+    }
+pwmOut.pulsewidth_ms(i);
+}}

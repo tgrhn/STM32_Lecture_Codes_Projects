@@ -1,0 +1,13 @@
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+	if (GPIO_Pin == GPIO_PIN_13)
+	{
+		random_number = rand()%10;
+
+		if(random_number==old_random_number){
+			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,SET);
+		}
+		else{
+			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,RESET);
+		}
+		old_random_number = random_number;
+	}

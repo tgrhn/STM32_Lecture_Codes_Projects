@@ -1,0 +1,35 @@
+unsigned char array[16] = {0xF0,0xF1,0xF2,0xF3,0xF4,0xF5,0xF6,0xF1,0xF5,0xF0,0xF7,0xF2,0xF0,0xF0,0xF3,0xF4};
+
+unsigned char *ptr;
+int main(void)
+{
+ptr = (unsigned char *)0x20000040;
+int oddsum;
+double evensum;
+double counteven=0;
+double countodd=0;
+double avgeven;
+double avgodd;
+for(int i =0;i<16;i++){
+	*ptr = array[i];
+	ptr+=1;
+	}
+ptr = (unsigned char *)0x20000040;
+	for(int i =0;i<16;i++){
+		if(*ptr%2==0){
+			evensum = evensum + *ptr;
+			counteven+=1;
+		}
+		else {
+			oddsum = oddsum + *ptr;
+			countodd+=1;
+		}
+		ptr+=1;
+	}
+	avgeven = evensum / counteven;
+	avgodd =  oddsum / countodd;
+
+
+
+	for(;;);
+}

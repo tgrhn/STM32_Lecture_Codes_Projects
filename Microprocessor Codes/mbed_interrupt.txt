@@ -1,0 +1,63 @@
+#include "mbed.h"
+
+DigitalOut blue(PA_6);
+DigitalOut red(PA_7);
+DigitalIn bt2(PC_7);
+InterruptIn bt1(PA_9);
+
+int counter = 0;
+int counter1= 0;
+
+void getButtons(){
+
+
+    blue=!blue;
+
+
+
+}
+
+int main() {
+   
+     bt1.fall(&getButtons);
+      __enable_irq();
+     
+    while(true){   
+
+      
+
+    if(bt2){
+        while(bt2);
+        counter++;
+        if(counter==2){
+        red=!red;
+         thread_sleep_for(300);
+          red=!red;
+         thread_sleep_for(300);
+         red=!red;
+         thread_sleep_for(300);
+          red=!red;
+         thread_sleep_for(300);
+
+         red=!red;
+         thread_sleep_for(300);
+          red=!red;
+         thread_sleep_for(300);
+        red=!red;
+         thread_sleep_for(300);
+          red=!red;
+         thread_sleep_for(300);
+        counter=0;
+        }
+    }
+
+    }
+}
+    
+
+
+
+  
+    
+    
+    

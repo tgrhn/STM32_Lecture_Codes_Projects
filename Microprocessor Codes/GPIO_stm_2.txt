@@ -1,0 +1,31 @@
+if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_9)==GPIO_PIN_SET)
+	  	  {
+	  		  while(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_9)==GPIO_PIN_SET);
+	  		  counter++;
+	  		  HAL_Delay(100);
+	  		 if(counter == 4){
+	  			HAL_GPIO_WritePin(GPIOA , GPIO_PIN_6 , GPIO_PIN_SET);
+
+	  			HAL_Delay(200);
+	  			HAL_GPIO_WritePin(GPIOA , GPIO_PIN_6 , GPIO_PIN_RESET);
+
+	  			HAL_Delay(200);
+	  			counter=0;
+
+	  		  }
+
+	    }
+	  if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_7)==GPIO_PIN_SET)
+	 	  	  {
+	 	  		  while(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_7)==GPIO_PIN_SET);
+	 	  		  counter1++;
+	 	  		  HAL_Delay(100);
+	 	  		 if(counter1 == 6){
+	 	  			HAL_GPIO_WritePin(GPIOA , GPIO_PIN_7 , GPIO_PIN_SET);
+	 	  			HAL_Delay(800);
+	 	  			HAL_GPIO_WritePin(GPIOA , GPIO_PIN_7 , GPIO_PIN_RESET);
+	 	  			HAL_Delay(800);
+	 	  			counter1=0;
+	 	  		  }
+
+	 	    }

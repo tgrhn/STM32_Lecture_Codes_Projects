@@ -1,0 +1,17 @@
+#include "mbed.h"
+
+#define WAIT_TIME_MS 250
+
+DigitalOut grn_led(PA_5);
+
+int main()
+{
+    while(true)
+    {
+        grn_led=1;
+        thread_sleep_for(WAIT_TIME_MS);
+
+        grn_led=0;
+       thread_sleep_for(WAIT_TIME_MS);
+    }}
+
